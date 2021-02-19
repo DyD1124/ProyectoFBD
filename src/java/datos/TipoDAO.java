@@ -1,104 +1,111 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package datos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import negocio.Cuenta;
+import negocio.Tipo;
 import util.ServiceLocator;
 
-public class CuentaDAO implements CRUD {
+/**
+ *
+ * @author mile1
+ */
+public class TipoDAO implements CRUD{
+    
+    private Tipo tipo;
 
-    private Cuenta cuenta;
-
-    public CuentaDAO() {
-        cuenta = new Cuenta();
+    public Tipo getTipo() {
+        return tipo;
     }
 
-    public Cuenta getCuenta() {
-        return cuenta;
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
     }
 
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
-    }
-
-    @Override // APROVED
+    @Override
     public void Insertar() {
         try {
-            String strSQL = "INSERT INTO Cuenta (k_idCuenta,v_valor,i_estado_cuenta,k_numero_reserva) VALUES(?,?,?,?);";
+            String strSQL = "INSERT INTO tipo (k_idtipo, n_descripcion, v_precio) VALUES(?,?,?);";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, cuenta.getIdCuenta());
-            prepStmt.setFloat(2, cuenta.getValor());
-            prepStmt.setString(3, cuenta.getEstadoCuenta());
-            prepStmt.setString(4, cuenta.getNumeroReserva());
+            prepStmt.setString(1, tipo.getIdTipo()); 
+            prepStmt.setString(2, tipo.getDescripcion()); 
+            prepStmt.setFloat(3, tipo.getPrecio()); 
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
         } catch (SQLException e) {
             System.out.println(e);
-        } finally {
+        }  finally {
             ServiceLocator.getInstance().liberarConexion();
         }
     }
 
-    @Override // APROVED
+    @Override
     public void Eliminar() {
         try {
-            String strSQL = "DELETE FROM Cuenta WHERE k_idCuenta=?;";
+            String strSQL = "DELETE FROM tipo WHERE k_idtipo=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, cuenta.getIdCuenta());
+            prepStmt.setString(1, tipo.getIdTipo()); 
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
         } catch (SQLException e) {
             System.out.println(e);
-        } finally {
+        }  finally {
             ServiceLocator.getInstance().liberarConexion();
         }
     }
 
-    @Override // APROVED
+    @Override
     public void Buscar() {
-        try {
-            String strSQL = "SELECT * FROM Cuenta WHERE k_idCuenta=?;";
+        try{
+            String strSQL = "SELECT * FROM tipo WHERE k_idtipo=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, cuenta.getIdCuenta());
+            prepStmt.setString(1,tipo.getIdTipo());
             ResultSet rs = prepStmt.executeQuery();
-            while (rs.next()) {
-                cuenta.setIdCuenta(rs.getString(1));
-                cuenta.setValor(rs.getFloat(2));
-                cuenta.setEstadoCuenta(rs.getString(3));
-                cuenta.setNumeroReserva(rs.getString(4));
+            while (rs.next()){
+                tipo.setIdTipo(rs.getString(1));
+                tipo.setDescripcion(rs.getString(2));
+                tipo.setPrecio(rs.getFloat(3));
             }
-        } catch (SQLException e) {
+        }
+        catch(SQLException e){
             System.out.println(e);
         } finally {
             ServiceLocator.getInstance().liberarConexion();
         }
     }
 
-    @Override // APROVED
+    @Override
     public void Modificar() {
-        try {
-            String strSQL = "UPDATE Cuenta SET v_valor=?, i_estado_cuenta=?, k_numero_reserva=? WHERE k_idCuenta=?;";
+         try{
+            String strSQL = "UPDATE tipo SET n_descripcion=?, v_precio=? WHERE k_idtipo=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setFloat(1, cuenta.getValor());
-            prepStmt.setString(2, cuenta.getEstadoCuenta());
-            prepStmt.setString(3, cuenta.getNumeroReserva());
-            prepStmt.setString(4, cuenta.getIdCuenta());
+            prepStmt.setString(1,tipo.getDescripcion());
+            prepStmt.setFloat(2,tipo.getPrecio());
+            prepStmt.setString(3,tipo.getIdTipo());
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
-        } catch (SQLException e) {
+        }
+        catch(SQLException e){
             System.out.println(e);
         } finally {
             ServiceLocator.getInstance().liberarConexion();
         }
     }
-
+    
+    
+    
 }

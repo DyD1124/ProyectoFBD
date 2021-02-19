@@ -1,38 +1,46 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package datos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import negocio.Cuenta;
+import negocio.Habitacion;
 import util.ServiceLocator;
 
-public class CuentaDAO implements CRUD {
-
-    private Cuenta cuenta;
-
-    public CuentaDAO() {
-        cuenta = new Cuenta();
+/**
+ *
+ * @author mile1
+ */
+public class HabitacionDAO implements CRUD{
+    
+    private Habitacion Habitacion;
+    
+    public HabitacionDAO(){
+        Habitacion = new Habitacion();
     }
 
-    public Cuenta getCuenta() {
-        return cuenta;
+    public Habitacion getHabitacion() {
+        return Habitacion;
     }
 
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
+    public void setHabitacion(Habitacion Habitacion) {
+        this.Habitacion = Habitacion;
     }
 
-    @Override // APROVED
+    @Override
     public void Insertar() {
-        try {
-            String strSQL = "INSERT INTO Cuenta (k_idCuenta,v_valor,i_estado_cuenta,k_numero_reserva) VALUES(?,?,?,?);";
+         try {
+            String strSQL = "INSERT INTO habitacion (k_numero_habitacion, q_numero_camas, k_idtipo) VALUES(?,?,?);";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, cuenta.getIdCuenta());
-            prepStmt.setFloat(2, cuenta.getValor());
-            prepStmt.setString(3, cuenta.getEstadoCuenta());
-            prepStmt.setString(4, cuenta.getNumeroReserva());
+            prepStmt.setString(1, Habitacion.getIdHabitacion());
+            prepStmt.setInt(2, Habitacion.getNumCamas());
+            prepStmt.setString(3, Habitacion.getIdTipo());
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
@@ -43,13 +51,13 @@ public class CuentaDAO implements CRUD {
         }
     }
 
-    @Override // APROVED
+    @Override
     public void Eliminar() {
-        try {
-            String strSQL = "DELETE FROM Cuenta WHERE k_idCuenta=?;";
+          try {
+            String strSQL = "DELETE FROM habitacion WHERE k_numero_habitacion=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, cuenta.getIdCuenta());
+            prepStmt.setString(1, Habitacion.getIdHabitacion());
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
@@ -60,19 +68,18 @@ public class CuentaDAO implements CRUD {
         }
     }
 
-    @Override // APROVED
+    @Override
     public void Buscar() {
-        try {
-            String strSQL = "SELECT * FROM Cuenta WHERE k_idCuenta=?;";
+           try {
+            String strSQL = "SELECT * FROM Cuenta WHERE k_numero_habitacion=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, cuenta.getIdCuenta());
+            prepStmt.setString(1, Habitacion.getIdHabitacion());
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
-                cuenta.setIdCuenta(rs.getString(1));
-                cuenta.setValor(rs.getFloat(2));
-                cuenta.setEstadoCuenta(rs.getString(3));
-                cuenta.setNumeroReserva(rs.getString(4));
+                Habitacion.setIdHabitacion(rs.getString(1));
+                Habitacion.setNumCamas(rs.getInt(2));
+                Habitacion.setIdTipo(rs.getString(3));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -81,16 +88,15 @@ public class CuentaDAO implements CRUD {
         }
     }
 
-    @Override // APROVED
+    @Override
     public void Modificar() {
-        try {
-            String strSQL = "UPDATE Cuenta SET v_valor=?, i_estado_cuenta=?, k_numero_reserva=? WHERE k_idCuenta=?;";
+         try {
+            String strSQL = "UPDATE habitacion SET q_numero_camas=?, k_idtipo=? WHERE k_numero_habitacion=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setFloat(1, cuenta.getValor());
-            prepStmt.setString(2, cuenta.getEstadoCuenta());
-            prepStmt.setString(3, cuenta.getNumeroReserva());
-            prepStmt.setString(4, cuenta.getIdCuenta());
+            prepStmt.setInt(1, Habitacion.getNumCamas());
+            prepStmt.setString(2, Habitacion.getIdTipo());
+            prepStmt.setString(3, Habitacion.getIdHabitacion());
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
@@ -100,5 +106,7 @@ public class CuentaDAO implements CRUD {
             ServiceLocator.getInstance().liberarConexion();
         }
     }
-
+    
+    
+    
 }
