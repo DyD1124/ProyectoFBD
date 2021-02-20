@@ -54,7 +54,7 @@ public class Controlador {
         return habitacionDAO.getHabitacion();
     }
     
-    public Hotel getHotel(){
+    private Hotel getHotel(){
         return hotelDAO.getHotel();
     }
     
@@ -78,7 +78,7 @@ public class Controlador {
         return reserva_HabitacionDAO.getReserva_Habitacion();
     }
     
-    public Tipo getTipoDAO(){
+    private Tipo getTipoDAO(){
         return tipoDAO.getTipo();
     }
     
@@ -108,7 +108,7 @@ public class Controlador {
         hotelDAO.Insertar();
     }
     
-    public void InsertarHuesped(){
+    private void InsertarHuesped(){
         huespedDAO.Insertar();
     }
     
@@ -128,7 +128,7 @@ public class Controlador {
         reserva_HabitacionDAO.Insertar();
     }
     
-    public void InsertarTipo(){
+    private void InsertarTipo(){
         tipoDAO.Insertar();
     }
     
@@ -154,7 +154,7 @@ public class Controlador {
         habitacionDAO.Buscar();
     }
     
-    public void BuscarHotel(){
+    private void BuscarHotel(){
         hotelDAO.Buscar();
     }
     
@@ -178,7 +178,7 @@ public class Controlador {
         reserva_HabitacionDAO.Buscar();
     }
     
-    public void BuscarTipo(){
+    private void BuscarTipo(){
         tipoDAO.Buscar();
     }
     
@@ -204,7 +204,7 @@ public class Controlador {
         habitacionDAO.Eliminar();
     }
     
-    public void EliminarHotel(){
+    private void EliminarHotel(){
         hotelDAO.Eliminar();
     }
     
@@ -228,7 +228,7 @@ public class Controlador {
         reserva_HabitacionDAO.Eliminar();
     }
     
-    public void EliminarTipo(){
+    private void EliminarTipo(){
         tipoDAO.Eliminar();
     }
     
@@ -254,7 +254,7 @@ public class Controlador {
         habitacionDAO.Modificar();
     }
     
-    public void ModificarHotel(){
+    private void ModificarHotel(){
         hotelDAO.Modificar();
     }
     
@@ -278,7 +278,7 @@ public class Controlador {
         reserva_HabitacionDAO.Modificar();
     }
     
-    public void ModificarTipo(){
+    private void ModificarTipo(){
         tipoDAO.Modificar();
     }
     
