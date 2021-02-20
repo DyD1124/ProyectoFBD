@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package datos;
 
 import java.sql.Connection;
@@ -12,19 +7,15 @@ import java.sql.SQLException;
 import negocio.Reserva_Habitacion;
 import util.ServiceLocator;
 
-/**
- *
- * @author mile1
- */
 public class Reserva_HabitacionDAO implements CRUD{
     
     private Reserva_Habitacion rh;
 
-    public Reserva_Habitacion getRh() {
+    public Reserva_Habitacion getReserva_Habitacion() {
         return rh;
     }
 
-    public void setRh(Reserva_Habitacion rh) {
+    public void setReserva_Habitacion(Reserva_Habitacion rh) {
         this.rh = rh;
     }
 

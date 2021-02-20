@@ -6,5 +6,8 @@ public class Hotel {
     private int dias;
     private int descuento;
     private String causante;
+
+    public Hotel() {
+    }
     
 }

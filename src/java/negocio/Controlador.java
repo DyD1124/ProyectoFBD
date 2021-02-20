@@ -3,17 +3,37 @@ package negocio;
 import datos.*;
 
 public class Controlador {
+     
+    private PersonaDAO personaDAO;
+    private ReservaDAO reservaDAO;
+    private PagoDAO pagoDAO; 
+    private CuentaDAO cuentaDAO;
+    private HabitacionDAO habitacionDAO;
+    private HotelDAO hotelDAO;
+    private HuespedDAO huespedDAO;
+    private ProductoServicio_CuentaDAO productoServicio_CuentaDAO;
+    private ProductoServicioDAO productoServicioDAO;
+    private RegistroDAO registroDAO;
+    private Reserva_HabitacionDAO reserva_HabitacionDAO;
+    private TipoDAO tipoDAO;
     
-    private PagoDAO pagoDAO = new PagoDAO();  
-    private PersonaDAO personaDAO = new PersonaDAO();
-    private ReservaDAO reservaDAO = new ReservaDAO();
-
     public Controlador(){
-        pagoDAO = new PagoDAO();
         personaDAO = new PersonaDAO();
         reservaDAO = new ReservaDAO();
+        pagoDAO = new PagoDAO();
+        cuentaDAO = new CuentaDAO();
+        habitacionDAO = new HabitacionDAO();
+        hotelDAO = new HotelDAO();
+        huespedDAO = new HuespedDAO();
+        productoServicio_CuentaDAO = new ProductoServicio_CuentaDAO();
+        productoServicioDAO = new ProductoServicioDAO();
+        registroDAO = new RegistroDAO();
+        reserva_HabitacionDAO = new Reserva_HabitacionDAO();
+        tipoDAO = new TipoDAO();
     }
-
+    
+    //GET
+    
     public Persona getPersona(){
         return personaDAO.getPersona();
     }
@@ -25,6 +45,44 @@ public class Controlador {
     public Pago getPago(){
         return pagoDAO.getPago();
     }
+    
+    public Cuenta getCuenta(){
+        return cuentaDAO.getCuenta();
+    }
+    
+    public Habitacion getHabitacion(){
+        return habitacionDAO.getHabitacion();
+    }
+    
+    public Hotel getHotel(){
+        return hotelDAO.getHotel();
+    }
+    
+    public Huesped getHuesped(){
+        return huespedDAO.getHuesped();
+    }
+    
+    public ProductoServicio_Cuenta getProductoServicio_Cuenta(){
+        return productoServicio_CuentaDAO.getProductoServicio_Cuenta();
+    }
+    
+    public ProductoServicio getProductoServicio(){
+        return productoServicioDAO.getProductoServicio();
+    }
+    
+    public Registro getRegistro(){
+        return registroDAO.getRegistro();
+    }
+    
+    public Reserva_Habitacion getReserva_HabitacionDAO(){
+        return reserva_HabitacionDAO.getReserva_Habitacion();
+    }
+    
+    public Tipo getTipoDAO(){
+        return tipoDAO.getTipo();
+    }
+    
+    //INSERT
     
     public void InsertarPersona(){
         personaDAO.Insertar();
@@ -38,6 +96,44 @@ public class Controlador {
         pagoDAO.Insertar();
     }
     
+    public void InsertarCuenta(){
+        cuentaDAO.Insertar();
+    }
+    
+    public void InsertarHabitacion(){
+        habitacionDAO.Insertar();
+    }
+    
+    public void InsertarHotel(){
+        hotelDAO.Insertar();
+    }
+    
+    public void InsertarHuesped(){
+        huespedDAO.Insertar();
+    }
+    
+    public void InsertarProductoServicio_Cuenta(){
+        productoServicio_CuentaDAO.Insertar();
+    }
+    
+    public void InsertarProductoServicio(){
+        productoServicioDAO.Insertar();
+    }
+    
+    public void InsertarRegistro(){
+        registroDAO.Insertar();
+    }
+    
+    public void InsertarReserva_Habitacion(){
+        reserva_HabitacionDAO.Insertar();
+    }
+    
+    public void InsertarTipo(){
+        tipoDAO.Insertar();
+    }
+    
+    //FIND
+    
     public void BuscarPersona(){
         personaDAO.Buscar();
     }
@@ -49,6 +145,44 @@ public class Controlador {
     public void BuscarPago(){
         pagoDAO.Buscar();
     }
+    
+    public void BuscarCuenta(){
+        cuentaDAO.Buscar();
+    }
+    
+    public void BuscarHabitacion(){
+        habitacionDAO.Buscar();
+    }
+    
+    public void BuscarHotel(){
+        hotelDAO.Buscar();
+    }
+    
+    public void BuscarHuesped(){
+        huespedDAO.Buscar();
+    }
+    
+    public void BuscarProductoServicio_Cuenta(){
+        productoServicio_CuentaDAO.Buscar();
+    }
+    
+    public void BuscarProductoServicio(){
+        productoServicioDAO.Buscar();
+    }
+    
+    public void BuscarRegistro(){
+        registroDAO.Buscar();
+    }
+    
+    public void BuscarReserva_Habitacion(){
+        reserva_HabitacionDAO.Buscar();
+    }
+    
+    public void BuscarTipo(){
+        tipoDAO.Buscar();
+    }
+    
+    //DELETE
     
     public void EliminarPersona(){
         personaDAO.Eliminar();
@@ -62,6 +196,44 @@ public class Controlador {
         pagoDAO.Eliminar();
     } 
     
+    public void EliminarCuenta(){
+        cuentaDAO.Eliminar();
+    } 
+    
+    public void EliminarHabitacion(){
+        habitacionDAO.Eliminar();
+    }
+    
+    public void EliminarHotel(){
+        hotelDAO.Eliminar();
+    }
+    
+    public void EliminarHuesped(){
+        huespedDAO.Eliminar();
+    }
+    
+    public void EliminarProductoServicio_Cuenta(){
+        productoServicio_CuentaDAO.Eliminar();
+    }
+    
+    public void EliminarProductoServicio(){
+        productoServicioDAO.Eliminar();
+    }
+    
+    public void EliminarRegistro(){
+        registroDAO.Eliminar();
+    }
+    
+    public void EliminarReserva_Habitacion(){
+        reserva_HabitacionDAO.Eliminar();
+    }
+    
+    public void EliminarTipo(){
+        tipoDAO.Eliminar();
+    }
+    
+    //UPDATE
+    
     public void ModificarPersona(){
         personaDAO.Modificar();
     } 
@@ -74,18 +246,49 @@ public class Controlador {
         pagoDAO.Modificar();
     } 
     
+    public void ModificarCuenta(){
+        cuentaDAO.Modificar();
+    }
+    
+    public void ModificarHabitacion(){
+        habitacionDAO.Modificar();
+    }
+    
+    public void ModificarHotel(){
+        hotelDAO.Modificar();
+    }
+    
+    public void ModificarHuesped(){
+        huespedDAO.Modificar();
+    }
+    
+    public void ModificarProductoServicio_Cuenta(){
+        productoServicio_CuentaDAO.Modificar();
+    }
+    
+    public void ModificarProductoServicio(){
+        productoServicioDAO.Modificar();
+    }
+    
+    public void ModificarRegistro(){
+        registroDAO.Modificar();
+    }
+    
+    public void ModificarReserva_Habitacion(){
+        reserva_HabitacionDAO.Modificar();
+    }
+    
+    public void ModificarTipo(){
+        tipoDAO.Modificar();
+    }
     
     public static void main(String[] args) {
         Controlador c = new Controlador();
-        Reserva r = c.getReserva();
-        r.setNumeroReserva("100000000");
-        r.setNumeroDias(7);
-        r.setFechaInicio("2021-01-19");
-        r.setFechaFinal("2021-01-26");
-        r.setEstado("P");
-        r.setNumeroDocumento("0000000000");
-        r.setIdDescuento("01");
-        c.ModificarReserva();
+        Persona p = c.getPersona();
+        p.setDocumentoIdentidad("0000000000");
+        c.BuscarPersona();
+        p.setSegundoNombre("Juan");
+        c.ModificarPersona();
     }
     
 }

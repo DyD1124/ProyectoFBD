@@ -106,5 +106,4 @@ public class PagoDAO implements CRUD{
             ServiceLocator.getInstance().liberarConexion();
         }
     }
-    
 }

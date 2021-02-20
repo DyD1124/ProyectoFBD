@@ -27,7 +27,8 @@ public class ReservaDAO implements CRUD{
     @Override//APROVED
     public void Insertar() {
         try {
-            String strSQL = "INSERT INTO reserva (k_numreserva,q_numdias,f_inicio,f_final,i_estadoreserva,k_num_doc,k_iddescuento) VALUES(?,?,?,?,?,?,?);";
+            String strSQL = "INSERT INTO reserva (k_numreserva,q_numdias,f_inicio,f_final,i_estadoreserva,k_num_doc,k_iddescuento) "
+                            + "VALUES(?,?,?,?,?,?,?);";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1,reserva.getNumeroReserva()); 
@@ -92,7 +93,8 @@ public class ReservaDAO implements CRUD{
     @Override//APROVADO
     public void Modificar() {
         try{
-            String strSQL = "UPDATE reserva SET q_numdias=? ,f_inicio=? ,f_final=? ,i_estadoreserva=? ,k_num_doc=? ,k_iddescuento=? WHERE k_numreserva=?;";
+            String strSQL = "UPDATE reserva SET q_numdias=? ,f_inicio=? ,f_final=? ,i_estadoreserva=? ,k_num_doc=? ,k_iddescuento=? "
+                            + "WHERE k_numreserva=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setInt(1,reserva.getNumeroDias());

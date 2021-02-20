@@ -1,6 +1,6 @@
 package negocio;
 
-public class ProductoServicios {
+public class ProductoServicio {
 
 	private String codigo;
 	private String nombreProducto;
@@ -8,7 +8,7 @@ public class ProductoServicios {
 	private int stock;
 	private float precio;
 
-	public ProductoServicios() {
+	public ProductoServicio() {
 
 	}
 

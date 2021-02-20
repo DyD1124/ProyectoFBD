@@ -27,7 +27,9 @@ public class PersonaDAO implements CRUD{
     @Override//APROVED
     public void Insertar() {
         try {
-            String strSQL = "INSERT INTO persona (k_num_doc,n_primnom,n_segnom,n_primapell,n_segapell,n_direccalle,n_direcavenida,n_direcciudad,n_direcadic,i_tipodoc,f_nacimiento,n_telefono) VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
+            String strSQL = "INSERT INTO persona (k_num_doc,n_primnom,n_segnom,n_primapell,n_segapell,"
+                            + "n_direccalle,n_direcavenida,n_direcciudad,n_direcadic,i_tipodoc,f_nacimiento,n_telefono) "
+                            + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1,persona.getDocumentoIdentidad()); 
@@ -102,7 +104,9 @@ public class PersonaDAO implements CRUD{
     @Override//APROVED
     public void Modificar() {
         try{
-            String strSQL = "UPDATE persona SET n_primnom=? ,n_segnom=? ,n_primapell=? ,n_segapell=? ,n_direccalle=? ,n_direcavenida=? ,n_direcciudad=? ,n_direcadic=? ,i_tipodoc=? ,f_nacimiento=? ,n_telefono=? WHERE k_num_doc=?;";
+            String strSQL = "UPDATE persona SET n_primnom=? ,n_segnom=? ,n_primapell=? ,n_segapell=? "
+                            + ",n_direccalle=? ,n_direcavenida=? ,n_direcciudad=? ,n_direcadic=? ,i_tipodoc=? ,f_nacimiento=? ,n_telefono=? "
+                            + "WHERE k_num_doc=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1,persona.getPrimerNombre());
