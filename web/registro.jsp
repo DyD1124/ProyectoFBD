@@ -1,3 +1,5 @@
+<%@page import="negocio.Persona"%>
+<%@page import="negocio.Controlador"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -48,5 +50,30 @@
         </div>
         <div><button type="button" name="button"><a href="inicioSesion.jsp" class="button">Registrarse</a></div></button>
     </form>
+    <%  if(!request.getParameterMap().isEmpty()){
+            
+            try{
+                Controlador c = new Controlador();
+                Persona p = c.getPersona();
+                p.setDocumentoIdentidad(request.getParameter("dni"));
+                p.setTipoDocumento(request.getParameter("TipoDocumento"));
+                p.setPrimerNombre(request.getParameter("PrimerNombre"));
+                p.setSegundoNombre(request.getParameter("SegundoNombre"));
+                p.setPrimerApellido(request.getParameter("PrimerApellido"));
+                p.setSegundoApellido(request.getParameter("SegundoAPellido"));
+                p.setFechaNacimiento(request.getParameter("fecha_nacimiento"));
+                p.setTelefono(request.getParameter("celular"));
+                p.setCalle(request.getParameter("direccion-Calle"));
+                p.setAvenida(request.getParameter("direccion-Avenida"));
+                p.setAdicional(request.getParameter("direccion-Adicional"));
+                p.setCiudad(request.getParameter("direccion-Ciudad"));
+                c.InsertarPersona();
+                out.print("WENNNA!");
+            }
+            catch(Exception e){
+                out.print("REVISA PELOTUDO");
+            }
+        }
+    %>     
 </body>
 </html>
