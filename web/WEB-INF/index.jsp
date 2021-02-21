@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : 21/02/2021, 09:51:24 AM
+    Author     : Familia Garay
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
