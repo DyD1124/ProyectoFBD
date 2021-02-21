@@ -26,7 +26,7 @@ public class CuentaDAO implements CRUD {
     @Override // APROVED
     public void Insertar() {
         try {
-            String strSQL = "INSERT INTO Cuenta (k_idCuenta,v_valor,i_estado_cuenta,k_numero_reserva) VALUES(?,?,?,?);";
+            String strSQL = "INSERT INTO Cuenta (k_idcuenta,v_valor,i_estado_cuenta,k_numero_reserva) VALUES(?,?,?,?);";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1, cuenta.getIdCuenta());
@@ -46,7 +46,7 @@ public class CuentaDAO implements CRUD {
     @Override // APROVED
     public void Eliminar() {
         try {
-            String strSQL = "DELETE FROM Cuenta WHERE k_idCuenta=?;";
+            String strSQL = "DELETE FROM Cuenta WHERE k_idcuenta=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1, cuenta.getIdCuenta());
@@ -63,7 +63,7 @@ public class CuentaDAO implements CRUD {
     @Override // APROVED
     public void Buscar() {
         try {
-            String strSQL = "SELECT * FROM Cuenta WHERE k_idCuenta=?;";
+            String strSQL = "SELECT * FROM Cuenta WHERE k_idcuenta=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1, cuenta.getIdCuenta());
@@ -84,7 +84,7 @@ public class CuentaDAO implements CRUD {
     @Override // APROVED
     public void Modificar() {
         try {
-            String strSQL = "UPDATE Cuenta SET v_valor=?, i_estado_cuenta=?, k_numero_reserva=? WHERE k_idCuenta=?;";
+            String strSQL = "UPDATE Cuenta SET v_valor=?, i_estado_cuenta=?, k_numero_reserva=? WHERE k_idcuenta=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setFloat(1, cuenta.getValor());

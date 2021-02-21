@@ -27,7 +27,7 @@ public class ProductoServicio_CuentaDAO implements CRUD {
 	@Override // APROVED
 	public void Insertar() {
 		try {
-			String strSQL = "INSERT INTO ProductoServicio_Cuenta (k_codigo,k_idCuenta,q_cantidad,f_pedido) "
+			String strSQL = "INSERT INTO ProductoServicio_Cuenta (k_codigo,k_idcuenta,q_cantidad,f_pedido) "
 					+ "VALUES(?,?,?,?);";
 			Connection conexion = ServiceLocator.getInstance().tomarConexion();
 			PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
@@ -47,7 +47,7 @@ public class ProductoServicio_CuentaDAO implements CRUD {
 	@Override // APROVED
 	public void Eliminar() {
 		try {
-			String strSQL = "DELETE FROM ProductoServicio_Cuenta WHERE k_codigo=? AND k_idCuenta=?;";
+			String strSQL = "DELETE FROM ProductoServicio_Cuenta WHERE k_codigo=? AND k_idcuenta=?;";
 			Connection conexion = ServiceLocator.getInstance().tomarConexion();
 			PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
 			prepStmt.setString(1, productoServicio_Cuenta.getCodigo());
@@ -65,7 +65,7 @@ public class ProductoServicio_CuentaDAO implements CRUD {
 	@Override // APROVED
 	public void Buscar() {
 		try {
-			String strSQL = "SELECT * FROM ProductoServicio_Cuenta WHERE k_codigo=? AND k_idCuenta=?;";
+			String strSQL = "SELECT * FROM ProductoServicio_Cuenta WHERE k_codigo=? AND k_idcuenta=?;";
 			Connection conexion = ServiceLocator.getInstance().tomarConexion();
 			PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
 			prepStmt.setString(1, productoServicio_Cuenta.getCodigo());
@@ -87,7 +87,7 @@ public class ProductoServicio_CuentaDAO implements CRUD {
 	@Override // APROVED
 	public void Modificar() {
 		try {
-			String strSQL = "UPDATE ProductoServicio_Cuenta SET q_cantidad=?, f_pedido=? WHERE k_codigo=? AND k_idCuenta=?;";
+			String strSQL = "UPDATE ProductoServicio_Cuenta SET q_cantidad=?, f_pedido=? WHERE k_codigo=? AND k_idcuenta=?;";
 			Connection conexion = ServiceLocator.getInstance().tomarConexion();
 			PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
 			prepStmt.setInt(1, productoServicio_Cuenta.getCantidad());

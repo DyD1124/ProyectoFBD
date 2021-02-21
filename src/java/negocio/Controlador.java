@@ -1,9 +1,11 @@
 package negocio;
 
 import datos.*;
+import java.sql.Connection;
+import util.ServiceLocator;
 
 public class Controlador {
-     
+    //Se crean los DAO'S para las entidades de la BD 
     private PersonaDAO personaDAO;
     private ReservaDAO reservaDAO;
     private PagoDAO pagoDAO; 
@@ -16,7 +18,7 @@ public class Controlador {
     private RegistroDAO registroDAO;
     private Reserva_HabitacionDAO reserva_HabitacionDAO;
     private TipoDAO tipoDAO;
-    
+    //Se instancian los objetos DAO
     public Controlador(){
         personaDAO = new PersonaDAO();
         reservaDAO = new ReservaDAO();
@@ -283,12 +285,13 @@ public class Controlador {
     }
     
     public static void main(String[] args) {
-        Controlador c = new Controlador();
+        /*Controlador c = new Controlador();
         Persona p = c.getPersona();
         p.setDocumentoIdentidad("0000000000");
         c.BuscarPersona();
         p.setSegundoNombre("Juan");
-        c.ModificarPersona();
+        c.ModificarPersona();*/
+        Connection conexion = ServiceLocator.getInstance().tomarConexion();
     }
     
 }

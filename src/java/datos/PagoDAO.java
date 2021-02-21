@@ -27,7 +27,7 @@ public class PagoDAO implements CRUD{
     @Override//APROVED
     public void Insertar() {
         try {
-            String strSQL = "INSERT INTO pago (k_idpago,v_valorpagado,i_formapago,f_pago,k_Idcuenta) VALUES(?,?,?,?,?);";
+            String strSQL = "INSERT INTO pago (k_idpago,v_valor_pagado,i_forma_pago,f_pago,k_idcuenta) VALUES(?,?,?,?,?);";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1,pago.getIdPago()); 
@@ -88,7 +88,7 @@ public class PagoDAO implements CRUD{
     @Override//APROVED
     public void Modificar() {
         try{
-            String strSQL = "UPDATE pago SET v_valorpagado=?, i_formapago=?, f_pago=?, k_idcuenta=? WHERE k_idpago=?;";
+            String strSQL = "UPDATE pago SET v_valor_pagado=?, i_forma_pago=?, f_pago=?, k_idcuenta=? WHERE k_idpago=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setDouble(1,pago.getValorPagado());

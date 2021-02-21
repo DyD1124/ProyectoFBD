@@ -27,8 +27,8 @@ public class PersonaDAO implements CRUD{
     @Override//APROVED
     public void Insertar() {
         try {
-            String strSQL = "INSERT INTO persona (k_num_doc,n_primnom,n_segnom,n_primapell,n_segapell,"
-                            + "n_direccalle,n_direcavenida,n_direcciudad,n_direcadic,i_tipodoc,f_nacimiento,n_telefono) "
+            String strSQL = "INSERT INTO persona (k_numero_documento,n_primer_nombre,n_segundo_nombre,n_primer_apellido,n_segundo_apellido,"
+                            + "n_direccion_calle,n_direccion_avenida,n_direccion_ciudad,n_direccion_adicional,i_tipo_documento,f_nacimiento,n_telefono) "
                             + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
@@ -57,7 +57,7 @@ public class PersonaDAO implements CRUD{
     @Override//APROVED
     public void Eliminar() {
         try {
-            String strSQL = "DELETE FROM persona WHERE k_num_doc=?;";
+            String strSQL = "DELETE FROM persona WHERE k_numero_documento=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1,persona.getDocumentoIdentidad()); 
@@ -74,7 +74,7 @@ public class PersonaDAO implements CRUD{
     @Override//APROVED
     public void Buscar() {
         try{
-            String strSQL = "SELECT * FROM persona WHERE k_num_doc=?;";
+            String strSQL = "SELECT * FROM persona WHERE k_numero_documento=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
              prepStmt.setString(1,persona.getDocumentoIdentidad());
@@ -104,8 +104,8 @@ public class PersonaDAO implements CRUD{
     @Override//APROVED
     public void Modificar() {
         try{
-            String strSQL = "UPDATE persona SET n_primnom=? ,n_segnom=? ,n_primapell=? ,n_segapell=? "
-                            + ",n_direccalle=? ,n_direcavenida=? ,n_direcciudad=? ,n_direcadic=? ,i_tipodoc=? ,f_nacimiento=? ,n_telefono=? "
+            String strSQL = "UPDATE persona SET n_primer_nombre=? ,n_segundo_nombre=? ,n_primer_apellido=? ,n_segundo_apellido=? "
+                            + ",n_direccion_calle=? ,n_direccion_avenida=? ,n_direccion_ciudad=? ,n_direccion_adicional=? ,i_tipo_documento=? ,f_nacimiento=? ,n_telefono=? "
                             + "WHERE k_num_doc=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
