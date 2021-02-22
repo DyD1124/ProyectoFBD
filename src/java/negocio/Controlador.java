@@ -284,14 +284,4 @@ public class Controlador {
         tipoDAO.Modificar();
     }
     
-    public static void main(String[] args) {
-        /*Controlador c = new Controlador();
-        Persona p = c.getPersona();
-        p.setDocumentoIdentidad("0000000000");
-        c.BuscarPersona();
-        p.setSegundoNombre("Juan");
-        c.ModificarPersona();*/
-        Connection conexion = ServiceLocator.getInstance().tomarConexion();
-    }
-    
 }

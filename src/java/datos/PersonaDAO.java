@@ -47,7 +47,9 @@ public class PersonaDAO implements CRUD{
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
+            
         } catch (SQLException e) {
+            System.out.println("aca");
             System.out.println(e);
         }  finally {
             ServiceLocator.getInstance().liberarConexion();
