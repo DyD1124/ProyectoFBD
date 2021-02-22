@@ -7,7 +7,7 @@
 	<main>
 		<div>
 			<form>
-				<p>Para consultas, ingresa tu nÃºmero de reserva aquÃ­:</p>
+				<p>Para consultas, ingresa tu número de reserva aquí:</p>
 				<input type="text" name="numReserva">
 				<button type="submit">Buscar</button>
 				
@@ -27,7 +27,7 @@
 		</div>
 		<h2>Tu reserva</h2>
 		<div>
-			<h3>Fechas de estadÃ­a</h3>
+			<h3>Fechas de estadía</h3>
 			<label>Fecha de entrada</label>
 			<p>yyyy-mm-dd</p>
 			<label>Fecha de salida</label>
@@ -36,7 +36,7 @@
 			<p>4</p>
 		</div>
 		<div>
-			<label>NÃºmero de personas:</label>
+			<label>Número de personas:</label>
 			<p>2</p>
 			<label>Estado:</label>
 			<p>ACTIVA</p>
@@ -46,12 +46,12 @@
 		<h3>Habitaciones</h3>
 		<div>
 			<div>
-				<label>NÃºmero habitaciÃ³n</label>
+				<label>Número habitación</label>
 				<p>203</p>
-				<label>NÃºmero camas</label>
+				<label>Número camas</label>
 				<p>2</p>
-				<label>DescripciÃ³n</label>
-				<p>una descripciÃ³n</p>
+				<label>Descripción</label>
+				<p>una descripción</p>
 			</div>
 		</div>
 	</main>

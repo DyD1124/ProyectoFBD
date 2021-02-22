@@ -12,13 +12,13 @@
 	<div>
 		<label for="tipo">Tipo de documento</label>
 		<select name="tipo" id="tipo">
-			<option value="CC">CÃ©dula de ciudadanÃ­a</option>
+			<option value="CC">Cédula de ciudadanía</option>
 			<option value="TI">Tarjeta de indentidad</option>
-			<option value="CE">CÃ©dula de extranjerÃ­a</option>
+			<option value="CE">Cédula de extranjería</option>
 			<option value="PAP">Pasaporte</option>
 			<option value="RG">Registro civil</option>
 		</select>
-		<label>NÃºmero de documento</label>
+		<label>Número de documento</label>
 		<input type="number" name="numDoc">
 	</div>
 	<div>
@@ -30,7 +30,7 @@
 		<input type="number" name="tel">
 	</div>
 	<div>
-		<h3>DirecciÃ³n</h3>
+		<h3>Dirección</h3>
 		<label>Calle</label>
 		<input type="text" name="calle">
 		<label>Avenida</label>

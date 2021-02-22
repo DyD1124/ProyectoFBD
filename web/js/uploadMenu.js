@@ -18,7 +18,7 @@ export function uploadSection(type, section) {
     const getTables = () => {
 
         tables({
-            link: `../components/${type}Component.html`,
+            link: ``,
             method: 'GET',
             header: {
                 "Content-type": "text/html; charset=utf-8"

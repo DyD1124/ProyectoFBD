@@ -1,15 +1,15 @@
 <form>
 	<div>
-		<h3>Fechas de estadÃ­a</h3>
+		<h3>Fechas de estadía</h3>
 		<label>Fecha de entrada</label>
 		<input type="date" name="f_entrada">
 		<label>Fecha de salida</label>
 		<input type="date" name="f_salida">
 	</div>
 	<div>
-		<label>Â¿CuÃ¡ntas personas van a ir?</label>
+		<label>¿Cuántas personas van a ir?</label>
 		<input type="number" name="nPersonas">
-		<label>Â¿CuÃ¡ntas habitaciones desea reservar?</label>
+		<label>¿Cuántas habitaciones desea reservar?</label>
 		<input type="number" name="nHabitaciones">
 	</div>
 	<button type="submit">Verificar disponibilidad</button>
