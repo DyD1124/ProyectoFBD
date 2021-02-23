@@ -40,4 +40,8 @@ export function uploadSection(type, section) {
 
 
     getHTMLS();
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> aa9d536f9c9c939e4c1dea114471e22c67c9a4b6
