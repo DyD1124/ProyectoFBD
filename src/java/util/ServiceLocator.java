@@ -23,7 +23,7 @@ public class ServiceLocator {
     
     private ServiceLocator() throws Exception{
         Class.forName("org.postgresql.Driver").newInstance();
-        conexion=DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProyectoFinal","postgres","macanuda1205");
+        conexion=DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProyectoFinal","postgres","yune");
         conexion.setAutoCommit(false);        
     }
     
