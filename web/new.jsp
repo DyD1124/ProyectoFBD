@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="hidden" name="" class="type" value="user">
+    <input type="hidden" name="" class="type" value="components/user">
     <section class="sectUno"></section>
     <main class="main"></main>
     <script src="./App.js" type="module"></script>

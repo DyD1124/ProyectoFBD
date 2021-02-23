@@ -29,7 +29,6 @@
         try{
             c.BuscarPersona();  
             String contra = p.getPrimerNombre()+p.getPrimerApellido();
-            out.print(contra);
             if(request.getParameter("contrasena").equals(contra)){
                 response.sendRedirect("new.jsp");
             }else{

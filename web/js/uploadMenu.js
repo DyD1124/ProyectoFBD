@@ -26,7 +26,7 @@ export function uploadSection(type, section) {
 
     const getHTMLS = () => {
         getHTML({
-            url: `components/${type}Component.jsp`,
+            url: `${type}Component.jsp`,
             success: (html) => {
 
                 document.querySelector(`.${section}`).innerHTML = html

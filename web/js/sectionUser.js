@@ -7,12 +7,13 @@ import { uploadSection } from './uploadMenu.js'
             d.addEventListener('click', (e) => {
                 console.log(e.target)
                 if (e.target.textContent == 'Reserva') {
+                    console.log('Carga')
                     e.preventDefault()
-                    uploadSection('reserva', 'main')
+                    uploadSection('components/reserva', 'main')
                 }
                 if (e.target.textContent == 'Mi reserva') {
                     e.preventDefault()
-                    uploadSection('miReserva', 'main')
+                    uploadSection('components/miReserva', 'main')
                 }
             });
         }
