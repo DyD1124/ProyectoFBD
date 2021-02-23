@@ -49,7 +49,20 @@
                 <p><%=rs.getFloat(4)%></p>
             </label>
         </div>
-            <button type="submit">
+                  <%
+
+                    }
+                } catch (Exception e) {
+                    out.print("No hay más habitaciones disponibles");
+                }
+
+            }
+        %>   
+         <%
+            if (!request.getParameterMap().isEmpty()) {
+          %>
+        <button type="submit">Continuar reserva</button>
+         <%}%>
         </form>
         <script>
             (() => {
@@ -99,14 +112,6 @@
             })()
 
         </script>
-        <%
 
-                    }
-                } catch (Exception e) {
-                    out.print("No hay más habitaciones disponibles");
-                }
-
-            }
-        %>    
     </div>
 </form>
