@@ -44,11 +44,13 @@ public class PersonaDAO implements CRUD{
             prepStmt.setString(10, persona.getTipoDocumento());
             prepStmt.setDate(11, Date.valueOf(persona.getFechaNacimiento()));
             prepStmt.setString(12, persona.getTelefono());
-            prepStmt.executeUpdate();
+            //prepStmt.executeUpdate();
+            prepStmt.execute();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
             
         } catch (SQLException e) {
+            ServiceLocator.getInstance().rollback();
             System.out.println("aca");
             System.out.println(e);
         }  finally {

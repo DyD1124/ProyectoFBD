@@ -13,6 +13,8 @@ public class ServiceLocator {
             try {
                 instance = new ServiceLocator();
             } catch (Exception e) {
+                System.out.println(e);
+                System.out.println("arriba");
                 e.printStackTrace();
             }
         }
@@ -21,8 +23,8 @@ public class ServiceLocator {
     
     private ServiceLocator() throws Exception{
         Class.forName("org.postgresql.Driver").newInstance();
-        conexion=DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProyectoFinal","postgres","yune");
-        conexion.setAutoCommit(false);
+        conexion=DriverManager.getConnection("jdbc:postgresql://localhost:5432/ProyectoFinal","postgres","macanuda1205");
+        conexion.setAutoCommit(false);        
     }
     
     public synchronized Connection tomarConexion() {

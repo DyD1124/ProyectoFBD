@@ -1,17 +1,18 @@
 import { uploadSection } from './uploadMenu.js'
 
-export function sectionUser () {
+        export function sectionUser() {
 
-    const d = document;
+            const d = document;
 
-    d.addEventListener('click', (e) => {
-        if (e.target.textContent == 'Reserva') {
-            e.preventDefault()
-            uploadSection('datoPersona','main')
+            d.addEventListener('click', (e) => {
+                console.log(e.target)
+                if (e.target.textContent == 'Reserva') {
+                    e.preventDefault()
+                    uploadSection('reserva', 'main')
+                }
+                if (e.target.textContent == 'Mi reserva') {
+                    e.preventDefault()
+                    uploadSection('miReserva', 'main')
+                }
+            });
         }
-        if (e.target.textContent == 'Mi reserva') {
-            e.preventDefault()
-            uploadSection('miReserva','main')
-        }
-    });
-}

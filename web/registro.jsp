@@ -25,35 +25,36 @@
       <div class="etiqueta">Fecha de nacimiento: <span class="campo-obligatorio">(*)</span></div>
       <div class="etiqueta">Número de celular: <span id="valCelular" class="campo-obligatorio">(*)NO SE COMO HACER PARA QUE COLOQUE VARIOS</span></div>
     </div>
-      <form id="usuarioRegistrado" method="post" autocomplete="off">
+      <form id="usuarioRegistrado" method="post" autocomplete="on">
       <div class="entrada-info">
-        <input type="number" name="dni" id="dni" placeholder="123456789">
-        <div> <input type="text" name="primernombre" id="Primernombre" placeholder="Daniel"></div>
-        <div> <input type="text" name="segundonombre" id="Segundonombre" placeholder="David"></div>
-        <div> <input type="text" name="primerapellido" id="PrimerApellido" placeholder="Garay"></div>
-        <div> <input type="text" name="segundapellido" id="SegundoApellido" placeholder="Palacios"></div>
-        <div> <input type="text" name="correo" id="correo" placeholder="daniel.garay@correo.com"></div>
-        <div> <input type="text" name="direccion-Calle" id="direccion-Calle" placeholder="5ta"></div>
-        <div> <input type="text" name="direccion-Avenida" id="direccion-Avenida" placeholder="Av Cali"></div>
-        <div> <input type="text" name="direccion-Ciudad" id="direccion-Ciudad" placeholder="Los santos"></div>
-        <div> <input type="text" name="direccion-Adicional" id="direccion-Adicional" placeholder="26b - 30"></div>
-        <div><select class="TipoDocumento" name="tipodocumento" required><option placeholder="">Seleccione</option>
-              <option placeholder="CC">Cédula</option>
-              <option placeholder="TI">Tarjeta de Identidad</option>
-              <option placeholder="CE">Cédula de extranjeria</option>
-              <option placeholder="PA">Pasaporte</option>
+        <input type="number" name="dni" id="dni" value="123456789">
+        <div> <input type="text" name="primernombre" id="Primernombre" value="Daniel"></div>
+        <div> <input type="text" name="segundonombre" id="Segundonombre" value="David"></div>
+        <div> <input type="text" name="primerapellido" id="PrimerApellido" value="Garay"></div>
+        <div> <input type="text" name="segundapellido" id="SegundoApellido" value="Palacios"></div>
+        <div> <input type="text" name="correo" id="correo" value="daniel.garay@correo.com"></div>
+        <div> <input type="text" name="direccion-Calle" id="direccion-Calle" value="5ta"></div>
+        <div> <input type="text" name="direccion-Avenida" id="direccion-Avenida" value="Av Cali"></div>
+        <div> <input type="text" name="direccion-Ciudad" id="direccion-Ciudad" value="Los santos"></div>
+        <div> <input type="text" name="direccion-Adicional" id="direccion-Adicional" value="26b - 30"></div>
+        <div><select class="TipoDocumento" name="tipodocumento" required><option value="">Seleccione</option>
+              <option value="CC">Cédula</option>
+              <option value="TI">Tarjeta de Identidad</option>
+              <option value="CE">Cédula de extranjeria</option>
+              <option value="PA">Pasaporte</option>
         </select></div>
-        <div> <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="2000-01-01"></div>
-        <div> <input type="number" name="celular" id="celular" placeholder="3101110000"></div>
+        <div> <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="2000-01-01"></div>
+        <div> <input type="number" name="celular" id="celular" value="3101110000"></div>
         </div> 
         <div>
-        <input type="hidden" name="opcion" placeholder="registrarse">
+        <input type="hidden" name="opcion" value="registrarse">
         </div>
-        <div><INPUT type="submit" placeholder="Añadir"></div>
+        <div><INPUT type="submit" value="Añadir"></div>
         <a href="inicioSesion.jsp">Inicio</a>
     </form>
     <%
         if (!request.getParameterMap().isEmpty()) {
+            try{
             Controlador c = new Controlador();
             Persona p = c.getPersona();
             p.setDocumentoIdentidad(request.getParameter("dni"));
@@ -69,6 +70,9 @@
             p.setAdicional(request.getParameter("direccion-Adicional"));
             p.setCiudad(request.getParameter("direccion-Ciudad"));
             c.InsertarPersona();
+            }catch(Exception e){
+                out.print("mal");
+            }
         }
     %>     
 </body>

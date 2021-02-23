@@ -1,34 +1,43 @@
 export function uploadSection(type, section) {
 
-    const tables = async (options) => {
+    const d = document;
+    const getHTML = (options) => {
+        let {url, success, error} = options
+        const xhr = new XMLHttpRequest();
 
-        let { link, method, header, success } = options
+        xhr.addEventListener('readystatechange', (e) => {
+            if (xhr.readyState !== 4)
+                return;
 
-        const result = await fetch(link, {
-            method,
-            header,
-        })
-
-        const html = (result.ok) ? result.text() : Promise.reject(result)
-        const data = await html;
-
-        success(data);
-    }
-
-    const getTables = () => {
-
-        tables({
-            link: ``,
-            method: 'GET',
-            header: {
-                "Content-type": "text/html; charset=utf-8"
-            },
-            success: (res) => {
-                document.querySelector(`.${section}`).innerHTML = res
-
+            if (xhr.status >= 200 && xhr.status <= 300) {
+                let html = xhr.responseText;
+                success(html)
+            } else {
+                let message = xhr.statusText || "Ocurrio un error";
+                error(`Error ${xhr.status}: ${message}`)
             }
-        })
+        });
+
+        xhr.open("GET", url);
+        // El content type es de tipo text/html
+        xhr.setRequestHeader("Content-type", "text/html; charset=utf-8");
+        xhr.send()
     }
 
-    getTables();
+    const getHTMLS = () => {
+        getHTML({
+            url: `components/${type}Component.jsp`,
+            success: (html) => {
+
+                document.querySelector(`.${section}`).innerHTML = html
+            },
+            error: (err) => {
+                // Aqui introduciriamos el error en la pagina.
+            }
+        });
+
+    }
+
+
+    getHTMLS();
 }

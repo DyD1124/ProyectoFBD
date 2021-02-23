@@ -11,6 +11,12 @@ public class Reserva {
     private String idDescuento;
     
     public Reserva(){
+        this.numeroReserva="";
+        this.numeroDias=0;
+        this.fechaFinal="";
+        this.fechaFinal="";
+        this.numeroDocumento="";
+        this.idDescuento="";
     }
 
     public String getNumeroReserva() {
