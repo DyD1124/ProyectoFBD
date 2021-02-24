@@ -1,3 +1,5 @@
+import { uploadSection } from './uploadMenu.js'
+
 export function clickElements() {
     const d = document;
 
@@ -47,7 +49,7 @@ export function clickElements() {
             } else {
                 d.querySelector('.content') ? "" : createFragment()
             }
-
+            uploadSection('components/prueba','checkOut')
         }
         if (e.target.textContent == 'Reporte') {
             $menu.classList.add('disableContent')

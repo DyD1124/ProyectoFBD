@@ -18,6 +18,7 @@ public class Controlador {
     private RegistroDAO registroDAO;
     private Reserva_HabitacionDAO reserva_HabitacionDAO;
     private TipoDAO tipoDAO;
+    
     //Se instancian los objetos DAO
     public Controlador(){
         personaDAO = new PersonaDAO();
@@ -110,7 +111,7 @@ public class Controlador {
         hotelDAO.Insertar();
     }
     
-    private void InsertarHuesped(){
+    public void InsertarHuesped(){
         huespedDAO.Insertar();
     }
     
@@ -142,7 +143,7 @@ public class Controlador {
     
     public void BuscarReserva(){
         reservaDAO.Buscar();
-    }
+    }   
     
     public void BuscarPago(){
         pagoDAO.Buscar();
@@ -183,6 +184,7 @@ public class Controlador {
     private void BuscarTipo(){
         tipoDAO.Buscar();
     }
+    
     
     //DELETE
     

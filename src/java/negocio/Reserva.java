@@ -1,5 +1,11 @@
 package negocio;
 
+import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+
 public class Reserva {
     
     private String numeroReserva;
@@ -8,16 +14,52 @@ public class Reserva {
     private String fechaFinal;
     private String estado;
     private String numeroDocumento;
-    private String idDescuento;
+    private String idDescuento;    
+    private Date fechaComienzo = null;
+    private Date fechaFin = null;
+    
+    private Calendar c = Calendar.getInstance();
+    public String dia = Integer.toString(c.get(Calendar.DATE));
+    public String mes = Integer.toString(c.get(Calendar.MONTH)+1);
+    public String annio = Integer.toString(c.get(Calendar.YEAR));
+    
+    public Date fecha = new Date();
+    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+    
+    public Date fechaActual = null;
     
     public Reserva(){
         this.numeroReserva="";
         this.numeroDias=0;
-        this.fechaFinal="";
+        this.fechaInicio="";
         this.fechaFinal="";
         this.numeroDocumento="";
         this.idDescuento="";
-    }
+    }                
+    
+    public boolean ValidarFechas(){     
+        
+        try{                        
+        fechaComienzo= formato.parse(fechaInicio);
+        fechaFin = formato.parse(fechaFinal);          
+        } catch (ParseException ex){
+            ex.printStackTrace();
+        }
+        if (fechaComienzo.before(fecha) && fechaFin.after(fecha)){
+            return true;
+        }else{
+            return false;
+        }                         
+    }      
+    
+    public String randon(){
+        String aux;
+        int aux1 = (int)(Math.random()*100+1);        
+        aux = String.valueOf(aux1);        
+        return aux;        
+    }          
+    
+    
 
     public String getNumeroReserva() {
         return numeroReserva;

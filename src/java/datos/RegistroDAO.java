@@ -11,6 +11,10 @@ import util.ServiceLocator;
 public class RegistroDAO implements CRUD{
     
     private Registro registro;
+    
+    public RegistroDAO(){
+        registro = new Registro();
+    }
 
     public Registro getRegistro() {
         return registro;
@@ -27,8 +31,12 @@ public class RegistroDAO implements CRUD{
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1, registro.getIdRegistro()); 
-            prepStmt.setDate(2,Date.valueOf(registro.getF_entrada())); 
-            prepStmt.setDate(3,Date.valueOf(registro.getF_salida())); 
+            prepStmt.setDate(2,Date.valueOf(registro.getF_entrada()));            
+            if(registro.getF_salida()==null){
+            prepStmt.setDate(3,null);                                          
+            }else{
+                prepStmt.setDate(3,Date.valueOf(registro.getF_salida()));
+            }            
             prepStmt.setString(4, registro.getNumeroReserva()); 
             prepStmt.setString(5,registro.getDocumentoIdentidad()); 
             prepStmt.executeUpdate();

@@ -21,3 +21,7 @@
         </select>
     </div>
 </div>
+
+<div class='checkOut'>
+    
+</div>
