@@ -1,4 +1,4 @@
-<%@page import="negocio.Persona"%>
+<%@page import="negocio.*"%>
 <!DOCTYPE html>
 <html lang="en">
 
