@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/02/2021, 06:52:27 PM
+    Author     : Familia Garay
+*/
+.logo{
+  width:60px;
+  margin-right: 800px;
+  margin-left: 150px;
+}
+.container{
+  margin-left:auto;
+  margin-right: auto;
+  padding: 10px;
+}
+#carouselExampleCaptions{
+  width: 870px;
+  margin-left: 125px;
+}
+body{
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  background-image: url("../RECURSOS/fondo.jpg");
+  text-align: center;
+}
+h1{
+  font-family: Titulos1;
+}
+h3{
+  font-family: Titulos1;
+}
+@font-face {
+  font-family: "Titulos1";
+  src: url("../RECURSOS/Staatliches-Regular.ttf");
+}
+
