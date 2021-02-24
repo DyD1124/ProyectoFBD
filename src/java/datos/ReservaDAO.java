@@ -114,8 +114,7 @@ public class ReservaDAO implements CRUD{
             ServiceLocator.getInstance().liberarConexion();
         }
     }
-    
-<<<<<<< HEAD
+
      public void CancelarReserva() {
         try{
             String strSQL = "UPDATE reserva SET i_estado_reserva=?  "
@@ -188,6 +187,4 @@ public class ReservaDAO implements CRUD{
 
     }
     
-=======
->>>>>>> 9ad2205077ef4f3737e56a579b09ec8c98b9d069
 }
