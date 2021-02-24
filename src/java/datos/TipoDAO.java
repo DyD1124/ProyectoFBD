@@ -12,6 +12,10 @@ public class TipoDAO implements CRUD{
     
     private Tipo tipo;
 
+    public TipoDAO(){
+        this.tipo = new Tipo();
+    }
+    
     public Tipo getTipo() {
         return tipo;
     }

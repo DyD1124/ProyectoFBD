@@ -10,8 +10,7 @@
 <div class="image">
     
 </div>
-<<<<<<< HEAD
-=======
+
 
 <div class="consult">
     <div class="consult__content disable">
@@ -26,19 +25,9 @@
         </select>
     </div>
 </div>
-<<<<<<< HEAD
+
 
 <div class='checkOut'>
     
 </div>
-=======
-    <%
-        Controlador c = new Controlador();
-        Reserva r = c.getReserva();
-        r.setNumeroReserva(request.getParameter("idreserva"));
-        
-        //Cambiar estado de pagado de cuenta
 
-    %>
->>>>>>> f91db62d9fbea5f19abd44bd8aa1bf94d5c90ffa
->>>>>>> f22487b73de0ab8f604340ff377b8e81bdec621a

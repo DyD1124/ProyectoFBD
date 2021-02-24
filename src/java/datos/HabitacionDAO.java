@@ -62,7 +62,7 @@ public class HabitacionDAO implements CRUD{
     @Override
     public void Buscar() {
            try {
-            String strSQL = "SELECT * FROM Cuenta WHERE k_numero_habitacion=?;";
+            String strSQL = "SELECT * FROM habitacion WHERE k_numero_habitacion=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setString(1, Habitacion.getIdHabitacion());

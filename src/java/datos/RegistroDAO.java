@@ -105,6 +105,7 @@ public class RegistroDAO implements CRUD{
             ServiceLocator.getInstance().commit();
         }
         catch(SQLException e){
+            ServiceLocator.getInstance().rollback();
             System.out.println(e);
         } finally {
             ServiceLocator.getInstance().liberarConexion();

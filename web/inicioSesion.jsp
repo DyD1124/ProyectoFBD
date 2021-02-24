@@ -20,7 +20,7 @@
         <div><input type="password" name="contrasena" id="contrasena" placeholder="Contraseña">
         </div>
         <br>
-        <div class"boton-registro"><button type="submit" name="button" class="boton">Iniciar Sesión</button></div>
+        <div class="boton-registro"><button type="submit" name="button" class="boton">Iniciar Sesión</button></div>
         <input type="hidden" name="opcion" value="ingreso">
       </div>
     </form>

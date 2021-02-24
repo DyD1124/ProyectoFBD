@@ -14,31 +14,11 @@ import util.ServiceLocator;
 public class Reserva_HabitacionDAO implements CRUD{
     
     private Reserva_Habitacion rh;
-    private Habitacion h;
-    private Reserva r;
     
    public Reserva_HabitacionDAO(){
        rh = new Reserva_Habitacion();
-       h = new Habitacion();
-       r = new Reserva();
    }
     
-    public Habitacion getH() {
-        return h;
-    }
-
-    public void setH(Habitacion h) {
-        this.h = h;
-    }
-
-    public Reserva getR() {
-        return r;
-    }
-
-    public void setR(Reserva r) {
-        this.r = r;
-    }
-
     public Reserva_Habitacion getReserva_Habitacion() {
         return rh;
     }
@@ -107,7 +87,7 @@ public class Reserva_HabitacionDAO implements CRUD{
     public void Modificar() {
       
     }
-    
+    /*
     public ResultSet Habitaciones_diponibles(){
         ResultSet rs=null;
         try{
@@ -138,5 +118,5 @@ public class Reserva_HabitacionDAO implements CRUD{
 
         
     }
-    
+    */
 }
