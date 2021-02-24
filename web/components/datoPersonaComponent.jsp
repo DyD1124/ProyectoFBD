@@ -1,3 +1,5 @@
+<%@page import="negocio.Cuenta"%>
+<%@page import="datos.CuentaDAO"%>
 <%@page import="negocio.Persona"%>
 <%@page import="datos.PersonaDAO"%>
 <%@page import="negocio.Reserva_Habitacion"%>
@@ -18,6 +20,7 @@
         }   
         if (!error) {
             String[] values = request.getParameterValues("hab");
+            String[] precios = request.getParameterValues("precio");
             for (int i = 0; i < values.length; i++) {
                 try {
                     String numHab = values[i];
@@ -30,6 +33,23 @@
                     e.printStackTrace();
                 }
             }
+            Float suma_estadia = 0.0f;
+            for (int i = 0; i < precios.length; i++) {
+                Float precio = Float.parseFloat(precios[i]);
+                suma_estadia = suma_estadia + precio;
+            }
+            Float dias = Float.parseFloat(request.getParameter("dias"));
+            suma_estadia = suma_estadia*dias;
+            int num = (int)(Math.random()*1000000000+1);
+            String numCuenta = String.valueOf(num);
+            
+            CuentaDAO cd = new CuentaDAO();
+            Cuenta c = cd.getCuenta();
+            c.setEstadoCuenta("NP");
+            c.setIdCuenta(numCuenta);
+            c.setNumeroReserva(reserva);
+            c.setValor(suma_estadia);
+            cd.Insertar();
         } else {
             out.print("No hay datos");
         }
@@ -76,7 +96,7 @@
     </div>
     <% }%>
 
-    
+    <input type="hidden" name= "numreser" value="<%=reserva %>">
     <button type="submit">Terminar reserva</button>
 </form>
     <%@ include file="/components/footer.jsp" %>

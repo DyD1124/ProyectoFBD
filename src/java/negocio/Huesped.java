@@ -3,6 +3,7 @@ package negocio;
 public class Huesped {
     private String idHuesped;
     private String documentoIdentidad;
+        
 
     public String getIdHuesped() {
         return idHuesped;

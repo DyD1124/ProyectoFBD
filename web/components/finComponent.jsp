@@ -1,3 +1,5 @@
+<%@page import="negocio.Reserva"%>
+<%@page import="datos.ReservaDAO"%>
 <%@page import="datos.PersonaDAO"%>
 <%@ include file="/components/header.jsp" %>
 <%
@@ -13,6 +15,7 @@
         String[] av = request.getParameterValues("avenida");
         String[] c = request.getParameterValues("ciudad");
         String[] da = request.getParameterValues("dirAdicional");
+        String[] tel = request.getParameterValues("tel");
         for (int i = 0; i < pn.length; i++) {
             PersonaDAO pd = new PersonaDAO();
             Persona p = pd.getPersona();
@@ -27,6 +30,7 @@
             p.setAvenida(av[i]);
             p.setCiudad(c[i]);
             p.setAdicional(da[i]);
+            p.setTelefono(tel[i]);
             pd.Insertar();
         }
     } catch (Exception e) {
@@ -34,5 +38,6 @@
     }
 %>
 <h1>Reserva realizada</h1>
+<h2>Tu número de reserva es : <%= request.getParameter("numreser")%></h2>
 
 <%@ include file="/components/footer.jsp" %>
