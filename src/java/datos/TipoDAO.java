@@ -97,6 +97,21 @@ public class TipoDAO implements CRUD{
         }
     }
     
-    
+    public ResultSet BuscarResult(){
+        ResultSet rs = null;
+        try{
+            String strSQL = "SELECT v_precio FROM tipo WHERE k_idtipo=?;";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1,tipo.getIdTipo());
+            rs = prepStmt.executeQuery();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
+        return rs;
+    }
     
 }

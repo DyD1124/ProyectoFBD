@@ -1,13 +1,8 @@
-<%@page import="java.util.Calendar"%>
-<%@page import="java.util.Date"%>
-<%@page import="negocio.Pago"%>
-<%@page import="negocio.Hotel"%>
-<%@page import="negocio.Cuenta"%>
 <%@page import="negocio.Reserva"%>
 <%@page import="negocio.Controlador"%>
 <nav class="menu">
     <a class="menu__link">Consultas</a>
-    <a class="menu__link">Check-in / Check - out</a>
+    <a class="menu__link" href="checkOut.jsp">Check-out</a>
     <a class="menu__link">Reporte</a>
     adf
 </nav>
@@ -40,26 +35,10 @@
     <%
         Controlador c = new Controlador();
         Reserva r = c.getReserva();
-        r.setNumeroDocumento(request.getParameter("documento"));
-        c.BuscarReservaPorPersona();
-        Cuenta ct = c.getCuenta();
-        c.BuscarCuentaPorReserva();
-        Hotel h = c.getHotel();
-        h.setIdDescuento(r.getIdDescuento());
-        c.BuscarHotel();
-        float nuevoValor = ct.getValor()-(ct.getValor()*(h.getDescuento()/100));
-        out.println("Esto es lo q debes pagar (Descuento aplicado): "+nuevoValor);
+        r.setNumeroReserva(request.getParameter("idreserva"));
         
-        //Una vez realizado el pago...
-        
-        Calendar fecha = Calendar.getInstance();
-        Pago p = c.getPago();
-        p.setFechaPago(fecha.get(Calendar.YEAR)+"-"+fecha.get(Calendar.MONTH)+"-"+fecha.get(Calendar.DATE));
-        p.setValorPagado(nuevoValor);
-        p.setIdCuenta(ct.getIdCuenta());
-        p.setIdPago("");//String de 10
-        p.setFromaPago(request.getParameter("formaPago"));
-        c.InsertarPago();
+        //Cambiar estado de pagado de cuenta
+
     %>
 >>>>>>> f91db62d9fbea5f19abd44bd8aa1bf94d5c90ffa
 >>>>>>> f22487b73de0ab8f604340ff377b8e81bdec621a

@@ -111,6 +111,26 @@ public class RegistroDAO implements CRUD{
         }
     }
     
-    
+    public void BuscarPorReserva() {
+        try{
+            String strSQL = "SELECT * FROM registro WHERE k_numero_reserva=?;";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1,registro.getNumeroReserva());
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()){
+                registro.setIdRegistro(rs.getString(1));
+                registro.setF_entrada(rs.getString(2));
+                registro.setF_salida(rs.getString(3));
+                registro.setNumeroReserva(rs.getString(4));
+                registro.setDocumentoIdentidad(rs.getString(5));
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
+    }
     
 }
