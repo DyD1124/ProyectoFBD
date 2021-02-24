@@ -37,15 +37,16 @@
                         r.setFechaFinal(request.getParameter("f_salida"));
                         Calendar c = Calendar.getInstance();
                         String dia = Integer.toString(c.get(Calendar.DATE));
-                        String mes = Integer.toString(c.get(Calendar.MONTH));
+                        String mes = Integer.toString(c.get(Calendar.MONTH)+1);
                         String annio = Integer.toString(c.get(Calendar.YEAR));
 
                         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         Date fechaHoy = dateFormat.parse(annio+"-"+mes+"-"+dia);
                         Date fechaInicial = dateFormat.parse(r.getFechaInicio());
                         Date fechaFinal = dateFormat.parse(r.getFechaFinal());
-
-                        if (!(fechaInicial.before(fechaHoy) || fechaFinal.before(fechaHoy))) {
+                        System.out.println(fechaInicial.before(fechaHoy));
+                        System.out.println(fechaFinal.before(fechaHoy));
+                        if (!fechaInicial.before(fechaHoy) && !fechaFinal.before(fechaHoy)) {
 
                             int dias = Math.round((fechaFinal.getTime() - fechaInicial.getTime()) / 86400000);
                             HotelDAO hd = new HotelDAO();
@@ -83,6 +84,7 @@
 
         %> 
         <input type="checkbox" name="hab" value="<%=rs.getString(1)%>">
+
         <div>
             <label for="hab">
                 <label>Número habitación</label>
@@ -95,11 +97,13 @@
                 <p><%=rs.getFloat(4)%></p>
             </label>
         </div>
+            <input type="hidden" name="precio" value="<%=rs.getFloat(4)%>">
 
         <%
 
             } %>
         <input type="hidden" name="numreser" value="<%=r2.getNumeroReserva()%>">
+        <input type="hidden" name="dias" value="<%=h.getDias()%>">
         <button type="submit" class="btnContinuar">Continuar reserva</button>
         <%
         } else {
