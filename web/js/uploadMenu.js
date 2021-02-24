@@ -1,4 +1,4 @@
-export function uploadSection(type, section) {
+export function uploadSection(type, section, parametros = "") {
 
     const d = document;
     const getHTML = (options) => {
@@ -26,10 +26,17 @@ export function uploadSection(type, section) {
 
     const getHTMLS = () => {
         getHTML({
+<<<<<<< HEAD
             url: type+`Component.jsp`,
             success: (html) => {
 
                 document.querySelector(`.`+section).innerHTML = html
+=======
+            url: `${type}Component.jsp`+parametros,
+            success: (html) => {
+                document.querySelector(`.${section}`).innerHTML = html
+                console.log("aca");
+>>>>>>> f22487b73de0ab8f604340ff377b8e81bdec621a
             },
             error: (err) => {
                 // Aqui introduciriamos el error en la pagina.
@@ -37,7 +44,5 @@ export function uploadSection(type, section) {
         });
 
     }
-
-
     getHTMLS();
-    }
+}

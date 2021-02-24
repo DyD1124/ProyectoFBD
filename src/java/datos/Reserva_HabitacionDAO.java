@@ -113,10 +113,10 @@ public class Reserva_HabitacionDAO implements CRUD{
         ResultSet rs=null;
         try{
             String strSQL = 
-                "SELECT  h.k_numero_habitacion ,h.q_numero_camas, t.n_descripcion, t.v_precio\n" +
+                "SELECT distinct h.k_numero_habitacion ,h.q_numero_camas, t.n_descripcion, t.v_precio\n" +
                     "FROM habitacion h, reserva r, reserva_habitacion rh, tipo t \n" +
                     "WHERE (h.k_numero_habitacion = rh.k_numero_habitacion and r.k_numero_reserva = rh.k_numero_reserva\n" +
-                    "and r.f_inicio not between ? and ?\n" +
+                    "and r.f_inicio not between ? and ? \n" +
                     "and r.f_final not between ? and ?) or (h.k_numero_habitacion != rh.k_numero_habitacion);";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
