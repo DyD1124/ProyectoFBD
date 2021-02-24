@@ -86,11 +86,10 @@ public class Reserva_HabitacionDAO implements CRUD{
     @Override
     public void Buscar() {
         try{
-            String strSQL = "SELECT * FROM reserva_habitacion WHERE k_numero_habitacion=? AND k_numero_reserva=?;";
+            String strSQL = "SELECT * FROM reserva_habitacion WHERE k_numero_reserva=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
-            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, rh.getIdHabitacion()); 
-            prepStmt.setString(2, rh.getNumeroReserva());
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL); 
+            prepStmt.setString(1, rh.getNumeroReserva());
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()){
                 rh.setIdHabitacion(rs.getString(1));
@@ -114,16 +113,56 @@ public class Reserva_HabitacionDAO implements CRUD{
         try{
             String strSQL = 
                 "SELECT distinct h.k_numero_habitacion ,h.q_numero_camas, t.n_descripcion, t.v_precio\n" +
-                    "FROM habitacion h, reserva r, reserva_habitacion rh, tipo t \n" +
-                    "WHERE (h.k_numero_habitacion = rh.k_numero_habitacion and r.k_numero_reserva = rh.k_numero_reserva\n" +
-                    "and r.f_inicio not between ? and ? \n" +
-                    "and r.f_final not between ? and ?) or (h.k_numero_habitacion != rh.k_numero_habitacion);";
+"                    FROM habitacion h, reserva r, reserva_habitacion rh, tipo t  \n" +
+"                    WHERE (h.k_numero_habitacion = rh.k_numero_habitacion and r.k_numero_reserva = rh.k_numero_reserva\n" +
+"                    and r.f_inicio not between ? and ?  \n" +
+"                    and r.f_final not between ? and ? ) or (h.k_numero_habitacion != rh.k_numero_habitacion\n" +
+"		     ) except \n" +
+"		     select distinct h1.k_numero_habitacion, h1.q_numero_camas, t1.n_descripcion, t1.v_precio from\n" +
+"		     habitacion h1, reserva r1, reserva_habitacion rh1, tipo t1\n" +
+"		     WHERE (h1.k_numero_habitacion = rh1.k_numero_habitacion and r1.k_numero_reserva = rh1.k_numero_reserva)\n" +
+"                    and (r1.f_inicio >= ? and r1.f_inicio <= ? )  \n" +
+"                    and (r1.f_final  >= ? and r1.f_final  <= ? );";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
             prepStmt.setDate(1, Date.valueOf(r.getFechaInicio())); 
             prepStmt.setDate(2, Date.valueOf(r.getFechaFinal())); 
             prepStmt.setDate(3, Date.valueOf(r.getFechaInicio())); 
             prepStmt.setDate(4, Date.valueOf(r.getFechaFinal())); 
+            prepStmt.setDate(5, Date.valueOf(r.getFechaInicio())); 
+            prepStmt.setDate(6, Date.valueOf(r.getFechaFinal())); 
+            prepStmt.setDate(7, Date.valueOf(r.getFechaInicio())); 
+            prepStmt.setDate(8, Date.valueOf(r.getFechaFinal())); 
+            
+            rs = prepStmt.executeQuery();
+            
+          
+        }
+        catch(SQLException e){
+            ServiceLocator.getInstance().rollback();
+            System.out.println(e);
+        } finally {
+           
+            ServiceLocator.getInstance().liberarConexion();
+        }
+        return rs;
+
+        
+    }
+    
+     public ResultSet Habitaciones_por_reserva(){
+        ResultSet rs=null;
+        try{
+            String strSQL = 
+                "SELECT h.k_numero_habitacion ,h.q_numero_camas, t.n_descripcion \n" +
+"                    FROM habitacion h, reserva r, reserva_habitacion rh, tipo t  \n" +
+"                    WHERE h.k_numero_habitacion = rh.k_numero_habitacion \n" +
+"		     and r.k_numero_reserva = rh.k_numero_reserva\n" +
+"		     and t.k_idtipo = h.k_idtipo\n" +
+"                    and r.k_numero_reserva = ?;";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1, (r.getNumeroReserva())); 
             rs = prepStmt.executeQuery();
             
           

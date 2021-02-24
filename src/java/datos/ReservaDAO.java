@@ -115,6 +115,26 @@ public class ReservaDAO implements CRUD{
         }
     }
     
+<<<<<<< HEAD
+     public void CancelarReserva() {
+        try{
+            String strSQL = "UPDATE reserva SET i_estado_reserva=?  "
+                            + "WHERE k_numero_reserva=?;";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1,reserva.getEstado());
+            prepStmt.setString(2,reserva.getNumeroReserva());
+            prepStmt.executeUpdate();
+            prepStmt.close();
+            ServiceLocator.getInstance().commit();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
+    }
+    
     public void BuscarPorPersona() {
         try{
             String strSQL = "SELECT * FROM reserva WHERE k_numero_documento=?;";
@@ -139,4 +159,35 @@ public class ReservaDAO implements CRUD{
         }
     }
     
+    public void BuscarReservaIdPersona(){
+        try{
+            String strSQL = "SELECT * \n" +
+                                "FROM reserva r where k_numero_documento= ?\n" +
+                                "and r.k_numero_reserva = ?;";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1,reserva.getNumeroDocumento());
+            prepStmt.setString(2,reserva.getNumeroReserva());
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()){
+                reserva.setNumeroReserva(rs.getString(1));
+                reserva.setNumeroDias(rs.getInt(2));
+                reserva.setFechaInicio(rs.getString(3));
+                reserva.setFechaFinal(rs.getString(4));
+                reserva.setEstado(rs.getString(5));
+                reserva.setNumeroDocumento(rs.getString(6));
+                reserva.setIdDescuento(rs.getString(7));
+            }
+           
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
+
+    }
+    
+=======
+>>>>>>> 9ad2205077ef4f3737e56a579b09ec8c98b9d069
 }

@@ -2,6 +2,7 @@ package negocio;
 
 import datos.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import util.ServiceLocator;
 
 public class Controlador {
@@ -77,11 +78,11 @@ public class Controlador {
         return registroDAO.getRegistro();
     }
     
-    public Reserva_Habitacion getReserva_HabitacionDAO(){
+    public Reserva_Habitacion getReserva_Habitacion(){
         return reserva_HabitacionDAO.getReserva_Habitacion();
     }
     
-    private Tipo getTipoDAO(){
+    public Tipo getTipo(){
         return tipoDAO.getTipo();
     }
     
@@ -144,10 +145,6 @@ public class Controlador {
     public void BuscarReserva(){
         reservaDAO.Buscar();
     }   
-    
-    public void BuscarReservaPorPersona(){
-        reservaDAO.BuscarPorPersona();
-    }
     
     public void BuscarPago(){
         pagoDAO.Buscar();
@@ -292,6 +289,18 @@ public class Controlador {
     
     private void ModificarTipo(){
         tipoDAO.Modificar();
+    }
+    
+    public ResultSet BuscarResultTipo(){
+        return tipoDAO.BuscarResult();
+    }
+    
+    public ResultSet BuscarResultProductoServicio_CuentaPorIdcuenta(){
+        return productoServicio_CuentaDAO.BuscarResultPorIdcuenta();
+    }
+    
+    public void BuscarRegistroPorReserva(){
+        registroDAO.BuscarPorReserva();
     }
     
 }
