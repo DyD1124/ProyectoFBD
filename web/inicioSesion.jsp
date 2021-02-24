@@ -8,7 +8,7 @@
   <title>InicioPersona</title>
 </head>
 <body>
-  <form id="inicio" method="post" autocomplete="off">
+    <form id="inicio" method="post" autocomplete="off" action="Session">
     <div class="datos-ingreso" id="datos_ingreso">
       <h3>Su contraseña es su numero de cedula</h3>
       <div><input class="usuario" type="text" name="usuario" id="usuario" placeholder="Usuario"></div>
@@ -21,23 +21,6 @@
       <input type="hidden" name="opcion" value="ingreso">
     </div>
   </form>
-  <%//Parte del anterior boton: <a href="indexUsuario.jsp" class="button">Iniciar Sesión</a>
-    if (!request.getParameterMap().isEmpty()) {
-        Controlador c = new Controlador();
-        Persona p = c.getPersona();
-        p.setDocumentoIdentidad(request.getParameter("usuario"));
-        try{
-            c.BuscarPersona();  
-            String contra = p.getPrimerNombre()+p.getPrimerApellido();
-            if(request.getParameter("contrasena").equals(contra)){
-                response.sendRedirect("new.jsp");
-            }else{
-                out.println("Contraseña Incorrecta");
-            }
-        }catch(Exception e){
-            out.println("Usted no se encuentra registrado");
-        }
-    }
-  %>    
+  
 </body>
 </html>

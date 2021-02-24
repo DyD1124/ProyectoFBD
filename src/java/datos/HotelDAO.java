@@ -11,6 +11,10 @@ public class HotelDAO implements CRUD{
     
     private Hotel hotel;
     
+    public HotelDAO(){
+        this.hotel = new Hotel();
+    }
+    
     public Hotel getHotel() {
         return hotel;
     }
@@ -59,10 +63,10 @@ public class HotelDAO implements CRUD{
     @Override
     public void Buscar() {
         try {
-            String strSQL = "SELECT * FROM hotel WHERE k_iddescuento=?;";
+            String strSQL = "SELECT * FROM hotel WHERE q_numero_dias_minimo=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
             PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, hotel.getIdDescuento());
+            prepStmt.setInt(1, hotel.getDias());
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()) {
                 hotel.setIdDescuento(rs.getString(1));

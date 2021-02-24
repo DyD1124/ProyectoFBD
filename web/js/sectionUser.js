@@ -1,7 +1,6 @@
 import { uploadSection } from './uploadMenu.js'
 
         export function sectionUser() {
-
             const d = document;
 
             d.addEventListener('click', (e) => {
