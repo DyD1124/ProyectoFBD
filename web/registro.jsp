@@ -3,54 +3,85 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="CSS/registro.css">
   <title>RegistroPersona</title>
 </head>
 <body>
   <div>
-    <div class="etiquetas">
-      <div class="etiqueta">Doc. de identidad: <span id="valDocumento" class="campo-obligatorio">(*)</span></div>
-      <div class="etiqueta">Primer Nombre: <span id="valNombre" class="campo-obligatorio">(*)</span></div>
-      <div class="etiqueta">Segundo Nombre: <span id="valNombre"></span></div>
-      <div class="etiqueta">Primer Apellido: <span id="valNombre" class="campo-obligatorio">(*)</span></div>
-      <div class="etiqueta">Segundo Apellido: <span id="valNombre"></span></div>
-      <div class="etiqueta">Correo electrónico: <span id="valCorreo" class="campo-obligatorio">(*)</span></div>
-      <div class="etiqueta">Dir. de residencia-Calle: <span id="valDireccion" class="campo-obligatorio">(*)</span></div>
-      <div class="etiqueta">Dir. de residencia-Avenida: <span id="valDireccion" class="campo-obligatorio">(*)</span></div>
-      <div class="etiqueta">Dir. de residencia-Ciudad: <span id="valDireccion" class="campo-obligatorio">(*)</span></div>
-      <div class="etiqueta">Dirección adicional: <span id="valDireccion"></span></div>
-      <div class="etiqueta">Tipo de documento <span id="TipoDocumento">(*)</span></div>
-      <div class="etiqueta">Fecha de nacimiento: <span class="campo-obligatorio">(*)</span></div>
-      <div class="etiqueta">Número de celular: <span id="valCelular" class="campo-obligatorio">(*)NO SE COMO HACER PARA QUE COLOQUE VARIOS</span></div>
-    </div>
-      <form id="usuarioRegistrado" method="post" autocomplete="on">
-      <div class="entrada-info">
-        <input type="number" name="dni" id="dni" value="123456789">
-        <div> <input type="text" name="primernombre" id="Primernombre" value="Daniel"></div>
-        <div> <input type="text" name="segundonombre" id="Segundonombre" value="David"></div>
-        <div> <input type="text" name="primerapellido" id="PrimerApellido" value="Garay"></div>
-        <div> <input type="text" name="segundapellido" id="SegundoApellido" value="Palacios"></div>
-        <div> <input type="text" name="correo" id="correo" value="daniel.garay@correo.com"></div>
-        <div> <input type="text" name="direccion-Calle" id="direccion-Calle" value="5ta"></div>
-        <div> <input type="text" name="direccion-Avenida" id="direccion-Avenida" value="Av Cali"></div>
-        <div> <input type="text" name="direccion-Ciudad" id="direccion-Ciudad" value="Los santos"></div>
-        <div> <input type="text" name="direccion-Adicional" id="direccion-Adicional" value="26b - 30"></div>
-        <div><select class="TipoDocumento" name="tipodocumento" required><option value="">Seleccione</option>
-              <option value="CC">Cédula</option>
-              <option value="TI">Tarjeta de Identidad</option>
-              <option value="CE">Cédula de extranjeria</option>
-              <option value="PA">Pasaporte</option>
-        </select></div>
-        <div> <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="2000-01-01"></div>
-        <div> <input type="number" name="celular" id="celular" value="3101110000"></div>
-        </div> 
-        <div>
-        <input type="hidden" name="opcion" value="registrarse">
+    <h1>Registro de usuario</h1>
+    <div class="p-registro">
+            <div><img class="img-logo" src="RECURSOS/Logo.png"></div>
+            <div><p>¡Bienvenido, registrese para reservar en los mejores hoteles.!
+            </div>
+    <div class="msj-campo-obl" id="campos_obligatorios">(*) Campos obligatorios</div>
+
+    <form id="usuarioRegistrado" method="post" autocomplete="off">
+      <div class="etiquetas">
+        <div class="etiqueta">
+          <label>Doc. de identidad: <span id="valDocumento" class="campo-obligatorio">(*)</span></label>
+          <input type="string" name="dni" id="dni" placeholder="123456789">
         </div>
-        <div><INPUT type="submit" value="Añadir"></div>
-        <a href="inicioSesion.jsp">Inicio</a>
+        <div class="etiqueta">
+          <label>Primer Nombre: <span id="valNombre" class="campo-obligatorio">(*)</span></label>
+          <div><input type="text" name="primernombre" id="primernombre" placeholder="Daniel"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Segundo Nombre: <span id="valNombre"></span></label>
+          <div><input type="text" name="segundonombre" id="segundonombre" placeholder="David"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Primer Apellido: <span id="valNombre" class="campo-obligatorio">(*)</span></label>
+          <div><input type="text" name="primerApellido" id="primerApellido" placeholder="Garay"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Segundo Apellido: <span id="valNombre"></span></label>
+          <div><input type="text" name="segundApellido" id="segundApellido" placeholder="Palacios"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Correo electrónico: <span id="valCorreo" class="campo-obligatorio">(*)</span></label>
+          <div><input type="text" name="correo" id="correo" placeholder="daniel.garay@correo.com"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Dir. de residencia-Calle: <span id="valDireccion" class="campo-obligatorio">(*)</span></label>
+          <div><input type="text" name="direccion-Calle" id="direccionCll" placeholder="5ta"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Dir. de residencia-Avenida: <span id="valDireccion" class="campo-obligatorio">(*)</span></label>
+          <div><input type="text" name="direccion-Avenida" id="direccionAv" placeholder="Av Cali"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Dir. de residencia-Ciudad: <span id="valDireccion" class="campo-obligatorio">(*)</span></label>
+          <div><input type="text" name="direccion-Ciudad" id="direccionCiu" placeholder="Los santos"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Dirección adicional: <span id="valDireccion"></span></label>
+          <div><input type="text" name="direccion-Adicional" id="direccionAdd" placeholder="26b - 30"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Tipo de documento <span id="TipoDocumento" class="campo-obligatorio">(*)</span></label>
+          <div><select class="TipoDocumento" name="Documento" required><option value="">Seleccione</option>
+                <option value="CC">Cédula</option>
+                <option value="TI">Tarjeta de Identidad</option>
+                <option value="CE">Cédula de extranjeria</option>
+                <option value="PA">Pasaporte</option>
+          </select></div>
+        </div>
+        <div class="etiqueta">
+          <label>Fecha de nacimiento: <span class="campo-obligatorio">(*)</span></label>
+          <div><input type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="2000-01-01"></div>
+        </div>
+        <div class="etiqueta">
+          <label>Número de celular: <span id="valCelular" class="campo-obligatorio">(*)</span></label>
+          <div><input type="string" name="celular" id="celular" placeholder="3101110000"></div>
+        </div>
+      </div>
+      <div>
+        <input type="hidden" name="opcion" value="registrarse">
+      </div>
+      <div class="añadirPersona"><INPUT type="submit" value="Añadir" class="btnEspecial"></div>
+      <a href="inicioSesion.jsp">Inicio</a>
     </form>
     <%
         if (!request.getParameterMap().isEmpty()) {

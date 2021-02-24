@@ -89,7 +89,7 @@ public class ReservaDAO implements CRUD{
             ServiceLocator.getInstance().liberarConexion();
         }
     }
-
+    
     @Override//APROVADO
     public void Modificar() {
         try{
@@ -107,6 +107,30 @@ public class ReservaDAO implements CRUD{
             prepStmt.executeUpdate();
             prepStmt.close();
             ServiceLocator.getInstance().commit();
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
+    }
+    
+    public void BuscarPorPersona() {
+        try{
+            String strSQL = "SELECT * FROM reserva WHERE k_numero_documento=?;";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1,reserva.getNumeroDocumento());
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()){
+                reserva.setNumeroReserva(rs.getString(1));
+                reserva.setNumeroDias(rs.getInt(2));
+                reserva.setFechaInicio(rs.getString(3));
+                reserva.setFechaFinal(rs.getString(4));
+                reserva.setEstado(rs.getString(5));
+                reserva.setNumeroDocumento(rs.getString(6));
+                reserva.setIdDescuento(rs.getString(7));
+            }
         }
         catch(SQLException e){
             System.out.println(e);

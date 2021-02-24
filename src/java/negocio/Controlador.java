@@ -56,7 +56,7 @@ public class Controlador {
         return habitacionDAO.getHabitacion();
     }
     
-    private Hotel getHotel(){
+    public Hotel getHotel(){
         return hotelDAO.getHotel();
     }
     
@@ -144,6 +144,10 @@ public class Controlador {
         reservaDAO.Buscar();
     }
     
+    public void BuscarReservaPorPersona(){
+        reservaDAO.BuscarPorPersona();
+    }
+    
     public void BuscarPago(){
         pagoDAO.Buscar();
     }
@@ -152,11 +156,15 @@ public class Controlador {
         cuentaDAO.Buscar();
     }
     
+    public void BuscarCuentaPorReserva(){
+        cuentaDAO.BuscarPorReserva();
+    }
+    
     public void BuscarHabitacion(){
         habitacionDAO.Buscar();
     }
     
-    private void BuscarHotel(){
+    public void BuscarHotel(){
         hotelDAO.Buscar();
     }
     

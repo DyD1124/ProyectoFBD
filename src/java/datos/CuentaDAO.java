@@ -101,4 +101,24 @@ public class CuentaDAO implements CRUD {
         }
     }
 
+    public void BuscarPorReserva() {
+        try {
+            String strSQL = "SELECT * FROM Cuenta WHERE k_numero_reserva=?;";
+            Connection conexion = ServiceLocator.getInstance().tomarConexion();
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+            prepStmt.setString(1, cuenta.getNumeroReserva());
+            ResultSet rs = prepStmt.executeQuery();
+            while (rs.next()) {
+                cuenta.setIdCuenta(rs.getString(1));
+                cuenta.setValor(rs.getFloat(2));
+                cuenta.setEstadoCuenta(rs.getString(3));
+                cuenta.setNumeroReserva(rs.getString(4));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            ServiceLocator.getInstance().liberarConexion();
+        }
+    }
+    
 }
