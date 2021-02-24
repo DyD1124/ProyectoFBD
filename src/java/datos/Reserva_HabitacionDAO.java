@@ -86,11 +86,10 @@ public class Reserva_HabitacionDAO implements CRUD{
     @Override
     public void Buscar() {
         try{
-            String strSQL = "SELECT * FROM reserva_habitacion WHERE k_numero_habitacion=? AND k_numero_reserva=?;";
+            String strSQL = "SELECT * FROM reserva_habitacion WHERE k_numero_reserva=?;";
             Connection conexion = ServiceLocator.getInstance().tomarConexion();
-            PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
-            prepStmt.setString(1, rh.getIdHabitacion()); 
-            prepStmt.setString(2, rh.getNumeroReserva());
+            PreparedStatement prepStmt = conexion.prepareStatement(strSQL); 
+            prepStmt.setString(1, rh.getNumeroReserva());
             ResultSet rs = prepStmt.executeQuery();
             while (rs.next()){
                 rh.setIdHabitacion(rs.getString(1));

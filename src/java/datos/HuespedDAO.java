@@ -11,6 +11,10 @@ import util.ServiceLocator;
 public class HuespedDAO implements CRUD {
     
     private Huesped huesped;
+    
+    public HuespedDAO(){
+        huesped = new Huesped();
+    }
 
     public Huesped getHuesped() {
         return huesped;

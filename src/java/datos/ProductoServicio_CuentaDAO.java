@@ -104,4 +104,21 @@ public class ProductoServicio_CuentaDAO implements CRUD {
 		}
 	}
 
+        public ResultSet BuscarResultPorIdcuenta() {
+            ResultSet rs = null;
+            try {
+		String strSQL = "SELECT k_codigo FROM ProductoServicio_Cuenta WHERE k_idcuenta=?;";
+		Connection conexion = ServiceLocator.getInstance().tomarConexion();
+		PreparedStatement prepStmt = conexion.prepareStatement(strSQL);
+		prepStmt.setString(1, productoServicio_Cuenta.getIdCuenta());
+		rs = prepStmt.executeQuery();
+		
+            } catch (SQLException e) {
+		System.out.println(e);
+            } finally {
+		ServiceLocator.getInstance().liberarConexion();
+            }
+            return rs;
+        }
+
 }
