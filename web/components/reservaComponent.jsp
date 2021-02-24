@@ -71,7 +71,7 @@
         <br>
         <%
                     ResultSet rs = rh.Habitaciones_diponibles();
-                    if(rs.next()){
+                    if(rs.isBeforeFirst()){
                         int num = (int)(Math.random()*1000000000+1);
                         String numReser = String.valueOf(num);
                         r2.setNumeroReserva(numReser);
